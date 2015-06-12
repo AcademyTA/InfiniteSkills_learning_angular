@@ -11,13 +11,8 @@
   <body>
 
     <div ng-cloak ng-controller="MainController">
-      <input ng-model='myfilter.str'>
-      <div ng-repeat='name in mydata.arr | filter: myfilter.str'>
-        {{ name }}
-      </div>
-      <hr>
-      <input ng-model='myfilter.name'>
-      <div ng-repeat='user in myobjectdata.arr | filter:myfilter'>
+      <input ng-model="myfilter.name">
+      <div ng-repeat="user in myobjectdata.arr | filter:myfilter | orderBy: 'age' | limitTo: 2">
         {{ user }}
       </div>
     </div>
