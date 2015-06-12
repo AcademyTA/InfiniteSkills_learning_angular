@@ -2,24 +2,26 @@
 <html ng-app="app">
   <head>
     <title>World Go On</title>
+    <style type="text/css">
+      .orange {
+        color: orange;
+      }
+      .italic {
+        font-style: italic;
+      }
+    </style>
   </head>
   <body>
-    <h1>Hello World!</h1>
 
     <div ng-controller="MainController">
-      <div ng-repeat="element in myarr track by $index">
-      <!-- track by $index uses the array index rather than the value -->
-        {{ element }} : {{ $index }}
-      </div>
-      <div ng-repeat-start="user in users"`>
-        <strong>{{ user.name }}</strong>: {{ user.age }}
-      </div>
-      <hr ng-repeat-end>
-      <div ng-repeat="attribute in ob">
-        {{ attribute }}
+      <h1 ng-class="{orange: classVar, italic: classVar}">Hello World!</h1>
+      <div ng-include="'test.html'"><!-- note the two sets of quotes -->
       </div>
     </div>
-
+    <script type="text/ng-template" id="test.html">
+      <h1 ng-class="'orange'">My template</h1>
+      <p ng-class="{orange:false, italic:true}">This is from a script tag with in the template</p>
+    </script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
     <script type="text/javascript" src="app.js"></script>
   </body>
