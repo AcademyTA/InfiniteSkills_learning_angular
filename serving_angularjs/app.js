@@ -1,5 +1,7 @@
-var app = angular.module('app', ['controllers']);
+var app = angular.module('app', []);
 
-angular.module('controllers', []).controller('MainController', function($scope) {
-  $scope.classVar = true
+app.controller('MainController', function($scope) {
+})
+
+app.controller('SubController', function($scope) {
 })

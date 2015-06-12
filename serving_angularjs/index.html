@@ -14,14 +14,16 @@
   <body>
 
     <div ng-controller="MainController">
-      <h1 ng-class="{orange: classVar, italic: classVar}">Hello World!</h1>
-      <div ng-include="'test.html'"><!-- note the two sets of quotes -->
+      <input ng-model="mydata.val">
+      <button ng-click="mydata.val=nil">Clear</button>
+      <h1>{{mydata.val}}</h1>
+      <div ng-controller="SubController">
+        <input ng-model="mydata.val">
+        <button ng-click="mydata.val=nil">Clear</button>
+        <h1>{{mydata.val}}</h1>
       </div>
     </div>
-    <script type="text/ng-template" id="test.html">
-      <h1 ng-class="'orange'">My template</h1>
-      <p ng-class="{orange:false, italic:true}">This is from a script tag with in the template</p>
-    </script>
+
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
     <script type="text/javascript" src="app.js"></script>
   </body>
