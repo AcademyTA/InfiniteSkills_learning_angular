@@ -1,15 +1,6 @@
 var app = angular.module('app', []);
 
 app.controller('MainController', function($scope) {
-
-  $scope.num = 0
-  $scope.nums = []
-
-  $scope.increment = function() {
-    $scope.num += 1
-  }
-  $scope.breakit = $scope.$watch('num', function() {
-    $scope.nums.push($scope.num)
-  })
+  $scope.mydata = "Some Random Text"
 })
 

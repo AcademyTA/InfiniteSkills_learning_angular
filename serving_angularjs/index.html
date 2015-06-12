@@ -2,22 +2,16 @@
 <html ng-app="app">
   <head>
     <title>World Go On</title>
-    <style type="text/css">
-      .orange {
-        color: orange;
-      }
-      .italic {
-        font-style: italic;
+    <style>
+      [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+        display: none !important;
       }
     </style>
   </head>
   <body>
 
     <div ng-controller="MainController">
-      <div>{{ num }}</div>
-      <div>{{ nums }}</div>
-      <button ng-click="increment()">Increment</button>
-      <button ng-click="breakit()">Break</button>
+      <span ng-cloak>{{ mydata }}<div>Hey there</div></span>
     </div>
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
