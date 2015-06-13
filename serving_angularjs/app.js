@@ -1,15 +1,17 @@
 var app = angular.module('app', []);
 
-app.controller('MainController', function($scope, constService, valService, twitterAPI) {
-  console.log(constService, valService())
-  console.log(twitterAPI)
-  twitterAPI.url = "newurl"
-  console.log(twitterAPI)
+app.controller('MainController', function($scope,myFactory) {
+  console.log(myFactory.getdata())
+  console.log(myFactory.mydata)
+  // cannot access mydata, only the getdata() function can.
 })
 
-app.constant('constService', {attr: "This is const data!"})
-
-app.value('valService', function(){
-  return "This is being returned from a function in valService"
+app.factory('myFactory',function() {
+  var mydata = "this is some other data"
+  var myfunc = function() {}
+  return {
+    getdata: function() {
+      return mydata
+    }  
+  }
 })
-app.constant('twitterAPI', {url: "api.twitter.com/v1/"})
