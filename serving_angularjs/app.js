@@ -1,39 +1,15 @@
 var app = angular.module('app', []);
 
-app.controller('MainController', function($scope, $filter) {
-
-  $scope.myobjectdata = {arr: [{name: "Zach", age: 18}, {name: "Raul", age: 25}, {name: "Martine", age: 69}, {name: "Zed", age: 23}, {name: "Rudy", age: 32}, {name: "Moesha", age: 21}, {name: "Avdi", age: 44}]}
-
-}) 
-
-app.filter('charlimit', function(){
-  return function(input, length){
-    if(!length){
-      length = 10
-    }
-    if(!input){
-      imput = ""
-    }
-    if(input.length <= length){
-      return length
-    } else {
-      return input.substring(0,length) + "..."
-    }
-  }
+app.controller('MainController', function($scope, constService, valService, twitterAPI) {
+  console.log(constService, valService())
+  console.log(twitterAPI)
+  twitterAPI.url = "newurl"
+  console.log(twitterAPI)
 })
 
-app.filter('candrink', function(){
-  return function(data, minage){
-    filtered = []
-    if(!minage){
-      minage = 21
-    }
-    for(var i = 0; i < data.length; i++){
-      var value = data[i]
-      if(value.age > minage){
-        filtered.push(value)
-      }
-    }
-    return filtered
-  }
+app.constant('constService', {attr: "This is const data!"})
+
+app.value('valService', function(){
+  return "This is being returned from a function in valService"
 })
+app.constant('twitterAPI', {url: "api.twitter.com/v1/"})
