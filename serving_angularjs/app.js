@@ -1,12 +1,12 @@
 var app = angular.module('app', []);
 
-app.controller('MainController', function($scope, myFactory, myService) {
-  // console.log(myFactory.getData())
-  // myFactory.addData('bla bla bla')
-  // console.log(myFactory.getData())
-  console.log(myService.getData())
-  myService.addData('bla bla bla')
-  console.log(myService.getData())
+app.controller('MainController', function($scope, myFactory, myTest) {
+  console.log(myFactory.getData())
+  myFactory.addData('bla bla bla')
+  console.log(myFactory.getData())
+  console.log(myTest.getData())
+  myTest.addData('bla bla bla')
+  console.log(myTest.getData())
 })
 
 app.factory('myFactory', function() {
@@ -15,39 +15,33 @@ app.factory('myFactory', function() {
     myString += newstr
   }
   return {
-    getData: function() {
+    getData: function(){
       return "String contains: " + myString
     },
     addData: addToString
   }
 })
 
-// app.service("myService", function(){
-//   var myString = "this is some other data"
-//   var addToString = function(newstr) {
-//     myString += newstr
-//   }
-
-//   this.getData = function() {
-//     return "String contains: " + myString
-//   },
-//   this.addData = addToString
-// })
-
-// app.factory('myService', function(){
-//   return new ServiceClass()
-// })
-
-app.service('myService', ServiceClass)
-
-function ServiceClass() {
+app.provider('myTest', function() {
   var myString = "this is some other data"
   var addToString = function(newstr) {
     myString += newstr
   }
+  return {
+    setData: function(data){
+      myString = data
+    },
+    $get: function(){
+      return {
+        getData: function() {
+          return "String contains: " + myString
+        },
+        addData: addToString
+      }
+    }
+  }
+})
 
-  this.getData = function() {
-    return "String contains: " + myString
-  },
-  this.addData = addToString
-}
+app.config(function(myTestProvider){
+  myTestProvider.setData("setting dat data")
+})
