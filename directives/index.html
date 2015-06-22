@@ -2,9 +2,17 @@
   <body>
     <div ng-controller="MainController">
 
-      <photo photo-src="{{photo.url}}" 
-        caption="Taken on: {{photo.date}}"/>
-
+    <div>
+      <photo photo-src="{{photo.url}}" caption="Taken on: {{photo.date}}"/>
+    </div>
+    <div>
+      <div photo photo-src="{{photo.url}}" caption="Taken on: {{photo.date}}"></div>
+    </div>
+    <div>
+      <div class="photo" photo-src="{{photo.url}}" caption="Taken on: {{photo.date}}"></div>
+    </div>
+    <div>
+      <!--  directive: photo -->
     </div>
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
